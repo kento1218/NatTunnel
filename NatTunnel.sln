@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatTunnelApp", "NatTunnelApp\NatTunnelApp.csproj", "{B438B453-E60F-4D3C-918C-C45B0C6B18FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatTunnelLib", "NatTunnelLib\NatTunnelLib.csproj", "{0D72E9B6-E4EC-4F4E-9B9F-628D486EBB13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B438B453-E60F-4D3C-918C-C45B0C6B18FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B438B453-E60F-4D3C-918C-C45B0C6B18FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B438B453-E60F-4D3C-918C-C45B0C6B18FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B438B453-E60F-4D3C-918C-C45B0C6B18FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D72E9B6-E4EC-4F4E-9B9F-628D486EBB13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D72E9B6-E4EC-4F4E-9B9F-628D486EBB13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D72E9B6-E4EC-4F4E-9B9F-628D486EBB13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D72E9B6-E4EC-4F4E-9B9F-628D486EBB13}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

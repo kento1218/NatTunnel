@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NatTunnel.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="StunServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">stun.l.google.com</Value>
+    </Setting>
+    <Setting Name="StunPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">19302</Value>
+    </Setting>
+    <Setting Name="LocalPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">2234</Value>
+    </Setting>
+    <Setting Name="ForwardPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ForwardIP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>
