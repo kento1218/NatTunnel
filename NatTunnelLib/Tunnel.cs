@@ -63,7 +63,7 @@ namespace NatTunnel
                     try
                     {
                         var ret = LocalSocket.Receive(buffer);
-                        Debug.WriteLine("<< {0} - REC {1} bytes", DateTime.Now.ToString("hh:mm:ss.fff"), buffer.Length);
+                        Debug.WriteLine("<< {0} - REC {1} bytes", DateTime.Now.ToString("hh:mm:ss.fff"), ret);
                         UpBytes += (ulong)ret;
                         if (RemoteIP != null)
                         {
@@ -89,7 +89,7 @@ namespace NatTunnel
                     try
                     {
                         var ret = RemoteSocket.Receive(buffer);
-                        Debug.WriteLine(">> {0} - REC {1} bytes", DateTime.Now.ToString("hh:mm:ss.fff"), buffer.Length);
+                        Debug.WriteLine(">> {0} - REC {1} bytes", DateTime.Now.ToString("hh:mm:ss.fff"), ret);
                         DownBytes += (ulong)ret;
                         if (ForwardIP != null)
                         {
