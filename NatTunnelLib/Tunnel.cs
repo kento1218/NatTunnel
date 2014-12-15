@@ -6,6 +6,7 @@ using System.Threading;
 using System.Net;
 using System.Net.Sockets;
 using LumiSoft.Net.STUN.Client;
+using System.Diagnostics;
 
 namespace NatTunnel
 {
@@ -52,14 +53,17 @@ namespace NatTunnel
             StopEvent = new ManualResetEvent(false);
             UpThread = new Thread(() =>
             {
-                var buffer = new byte[2048];
+                LocalSocket.ReceiveBufferSize = 1024 * 1024;
+                var buffer = new byte[LocalSocket.ReceiveBufferSize];
                 LocalSocket.ReceiveTimeout = 50;
+                RemoteSocket.SendBufferSize = LocalSocket.ReceiveBufferSize;
 
                 while (!StopEvent.WaitOne(0))
                 {
                     try
                     {
                         var ret = LocalSocket.Receive(buffer);
+                        Debug.WriteLine("<< {0} - REC {1} bytes", DateTime.Now.ToString("hh:mm:ss.fff"), buffer.Length);
                         UpBytes += (ulong)ret;
                         if (RemoteIP != null)
                         {
@@ -67,21 +71,25 @@ namespace NatTunnel
                             RemoteSocket.SendTo(buffer, ret, SocketFlags.None, remoteEP);
                         }
                     }
-                    catch (SocketException)
+                    catch (SocketException e)
                     {
+                        Debug.WriteLine("<< {0} - ERR {1}", DateTime.Now.ToString("hh:mm:ss.fff"), e.Message);
                     }
                 }
             });
             DownThread = new Thread(() =>
             {
-                var buffer = new byte[2048];
+                RemoteSocket.ReceiveBufferSize = 1024 * 1024;
+                var buffer = new byte[RemoteSocket.ReceiveBufferSize];
                 RemoteSocket.ReceiveTimeout = 50;
+                LocalSocket.SendBufferSize = RemoteSocket.ReceiveBufferSize;
 
                 while (!StopEvent.WaitOne(0))
                 {
                     try
                     {
                         var ret = RemoteSocket.Receive(buffer);
+                        Debug.WriteLine(">> {0} - REC {1} bytes", DateTime.Now.ToString("hh:mm:ss.fff"), buffer.Length);
                         DownBytes += (ulong)ret;
                         if (ForwardIP != null)
                         {
@@ -89,8 +97,9 @@ namespace NatTunnel
                             LocalSocket.SendTo(buffer, ret, SocketFlags.None, forwardEP);
                         }
                     }
-                    catch (SocketException)
+                    catch (SocketException e)
                     {
+                        Debug.WriteLine(">> {0} - ERR {1}", DateTime.Now.ToString("hh:mm:ss.fff"), e.Message);
                     }
                 }
             });
